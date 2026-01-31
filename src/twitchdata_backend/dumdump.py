@@ -819,8 +819,8 @@ async def run(logins):
     async with RedisCM() as red:
       async with aiohttp.ClientSession(headers=headers) as httpsession:
         await red.updateLogins(logins,True)  
-        mentions = await red.getMentions()
-        print('mentions=',mentions)
+        #mentions = await red.getMentions()
+        #print('mentions=',mentions)
         await get_streams(d,httpsession,logins)     
         t = time.time()
         
