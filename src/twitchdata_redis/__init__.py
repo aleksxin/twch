@@ -1,2 +1,1 @@
-def hello() -> str:
-    return "Hello from twitchdata-redis!"
+from .redis_cm import RedisCM

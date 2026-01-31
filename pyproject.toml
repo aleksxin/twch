@@ -4,8 +4,32 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "aiohttp>=3.13.3",
+    "asyncio>=4.0.0",
+    "datetime>=6.0",
+    "distinctipy>=1.3.4",
+    "fastapi>=0.128.0",
+    "logging>=0.4.9.6",
+    "nicegui[highcharts]>=3.6.1",
+    "numpy>=2.4.1",
+    "playsound==1.2.2",
+    "redis>=7.1.0",
+    "rich>=14.3.1",
+    "statistics>=1.0.3.5",
+    "tzdata>=2025.3",
+    "websockets>=16.0",
+]
+
+[project.scripts]
+twitchdata-frontend = "twitchdata_frontend.slep:main"
 
 [build-system]
 requires = ["uv_build>=0.9.28,<0.10.0"]
 build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+    "pytest-asyncio>=1.3.0",
+]
