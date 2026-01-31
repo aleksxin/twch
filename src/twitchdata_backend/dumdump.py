@@ -10,8 +10,8 @@ import distinctipy
 from playsound import playsound
 import statistics
 #import csv
-import aiofiles
-from aiocsv import AsyncWriter
+#import aiofiles
+#from aiocsv import AsyncWriter
 
 from rich import print
 from rich.markup import escape
