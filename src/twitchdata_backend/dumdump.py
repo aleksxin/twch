@@ -26,6 +26,7 @@ from collections import deque
 
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
+import os
 
 import time
 #import keyboard 
@@ -75,7 +76,8 @@ EVENT_LIMIT = 8
    
 class StreamerData:
     def __init__(self, stream_id, name, login, viewers = 0, streamstarted = None, title =''):
-        playsound('419023__jacco18__acess-denied-buzz.mp3',False)
+        if os.path.exists("c:\\data\\chatty_logs\\clien\\419023__jacco18__acess-denied-buzz.mp3"):
+            playsound('419023__jacco18__acess-denied-buzz.mp3',False)
         self._id = stream_id
         self._name = name
         self._login = login
@@ -129,8 +131,9 @@ class StreamerData:
             self._title = title    
                 
          
-    def end(self,endts):        
-        playsound('159399__noirenex__power-down.wav',False)
+    def end(self,endts): 
+        if os.path.exists("c:\\data\\chatty_logs\\clien\\159399__noirenex__power-down.wav"):
+            playsound('159399__noirenex__power-down.wav',False)
         self._ended = endts
 
         return self.get_row_final()
@@ -453,7 +456,8 @@ class StreamerDataWS(StreamerData):
         return ret
            
     def disconnect_data(self,end_time):
-        playsound('51702__bristolstories__ping.mp3',False)
+        if os.path.exists("c:\\data\\chatty_logs\\clien\\51702__bristolstories__ping.mp3"):
+            playsound('51702__bristolstories__ping.mp3',False)
         self._ws_session = None
         self._sessions = None
         self._ended = end_time
@@ -692,8 +696,10 @@ async def ws(url,d,httpsession,r,logins,background_tasks,loginsids,ws_session,co
       try:  
        #print(websocket)
        #asyncio.create_task(block_checking(websocket))   
-       #print(*spe,sep = '')   
-       playsound('778926__looplicator__120-bpm-industrial-drum-loop-9503-wav.wav',False)
+       #print(*spe,sep = '')
+
+       if os.path.exists("c:\\data\\chatty_logs\\clien\\778926__looplicator__120-bpm-industrial-drum-loop-9503-wav.wav"):
+            playsound('778926__looplicator__120-bpm-industrial-drum-loop-9503-wav.wav',False)
        
        #ws_session[0] = '';     
        mtime = None  
@@ -774,7 +780,9 @@ async def ws(url,d,httpsession,r,logins,background_tasks,loginsids,ws_session,co
             await asyncio.sleep(1)       
             continue
   except asyncio.CancelledError:
-    playsound('90143__pengo_au__steam_burst.wav',False)   
+
+    if os.path.exists("c:\\data\\chatty_logs\\clien\\90143__pengo_au__steam_burst.wav"):
+        playsound('90143__pengo_au__steam_burst.wav',False)   
     await r.setDisconnected(d)
     print("ws cancelled...")    
     return 'closed'   
@@ -789,7 +797,8 @@ async def run(logins):
     
     sorting = {"value" : 0, "reverse" : False}
     def setSorting(mode,revers=True):
-        #playsound('70106__justinbw__function-beep.wav',False)
+        if os.path.exists("c:\\data\\chatty_logs\\clien\\70106__justinbw__function-beep.wav"):
+            playsound('70106__justinbw__function-beep.wav',False)
         sorting['value'] = mode
         sorting['reverse'] = revers
         
@@ -886,8 +895,8 @@ async def run(logins):
                     #print(str(d))                             
                     if new_csv_time != csv_time and time.time() - lb_t > 3:
                         if csv_time:
-                          async with aiofiles.open(fname, 'a', newline='') as f:
-                            writer_obj = AsyncWriter(f)        
+             #             async with aiofiles.open(fname, 'a', newline='') as f:
+             #               writer_obj = AsyncWriter(f)        
                             await red.addTimeValues(csv_time,new_csv_time.minute,d)
                             #await writer_obj.writerow([csv_time.astimezone(tz.gettz(DT_TIMEZONE)).strftime("%m-%d %H:%M")]+[item for t in[d[loginsdict[k]].get_csv_data(new_csv_time.minute) if loginsdict[k] in d else ("","","") for k in loginsdict]for item in t])
                           #live.console.log(new_csv_time.astimezone(tz.gettz(DT_TIMEZONE)).strftime("%m-%d %H:%M:%S") ,'->',csv_time.astimezone(tz.gettz(DT_TIMEZONE)).strftime("%m-%d %H:%M:%S"))    
@@ -914,7 +923,8 @@ async def run(logins):
                                 #history_row.extend((i for i in await asyncio.create_task(get_streams(d,httpsession,logins,ws_session[0],red))))
                                 
                         except aiohttp.ClientConnectorError as e:
-                            playsound('70106__justinbw__function-beep.wav',False)
+                            if os.path.exists("c:\\data\\chatty_logs\\clien\\70106__justinbw__function-beep.wav"):
+                                playsound('70106__justinbw__function-beep.wav',False)
                             console.log('Connection Error', str(e))        
                         t = time.time()
 
