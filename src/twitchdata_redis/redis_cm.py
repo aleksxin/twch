@@ -1,5 +1,6 @@
 import redis.asyncio as redis
 from itertools import pairwise
+import os
 
 class RedisCM:
     def __init__(self, connection_pool = None):
@@ -13,7 +14,10 @@ class RedisCM:
         return self._pipe    
     
     async def __aenter__(self):
-        self._redis= redis.Redis(connection_pool=self._cm,decode_responses=True)
+        if os.name == 'posix' and self._cm is None:
+            self._redis = redis.from_url("unix://localhost/run/valkey/valkey.sock?decode_responses=True")
+        else: 
+            self._redis= redis.Redis(connection_pool=self._cm,decode_responses=True)
         return self 
 
     async def __aexit__(self, exc_type, exc, tb):

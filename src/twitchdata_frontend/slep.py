@@ -11,6 +11,7 @@ from fastapi import Query
 from twitchdata_redis import RedisCM
 
 import logging
+import os
 
 from time import perf_counter
 DT_TIMEZONE = 'America/Chicago'
@@ -657,7 +658,10 @@ async def createPool():
     #loop.slow_callback_duration = 0.05
 
     global pool 
-    pool = redis.ConnectionPool(decode_responses=True,health_check_interval = 5,max_connections=55)
+    if os.name == 'posix':
+        pool = redis.ConnectionPool(connection_class=redis.UnixDomainSocketConnection, path='/run/valkey/valkey.sock',decode_responses=True,health_check_interval = 5,max_connections=55)
+    else:    
+        pool = redis.ConnectionPool(decode_responses=True,health_check_interval = 5,max_connections=55)
 #    r = redis.Redis(connection_pool=pool)
 #    print(f"Ping successful: {await r.ping()}")
 #    print(await r.hgetall("commands:shutdown"))
