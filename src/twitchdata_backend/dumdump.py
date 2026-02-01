@@ -59,8 +59,8 @@ def complement(h):
     #print(h)
     return '#%02x%02x%02x' % tuple([int(255*x) for x in distinctipy.get_text_color([1.0*x/255 for x in tuple(int(h.lstrip("#")[i:i+2], 16) for i in (0, 2, 4))])])
     
-CLIENTID = 'spyiu9jqdnfjtwv6l1xjk5zgt8qb91l'
-TOKENID = '6qas8wcy4mrpc49p5jjgqv0ce031du'
+CLIENTID = 'hain44pio7jpdyo2yab09ols71hmkq'
+TOKENID = 'qdmv5qmxo667zhe6rhehz59bmo1e6z'
 URL = 'https://api.twitch.tv/helix/'
 WS_TIMEOUT = 30
 WS_URL = 'wss://eventsub.wss.twitch.tv/ws?keepalive_timeout_seconds='+str(WS_TIMEOUT)
@@ -77,7 +77,7 @@ EVENT_LIMIT = 8
 class StreamerData:
     def __init__(self, stream_id, name, login, viewers = 0, streamstarted = None, title =''):
         if os.path.exists("c:\\data\\chatty_logs\\clien\\419023__jacco18__acess-denied-buzz.mp3"):
-            playsound('419023__jacco18__acess-denied-buzz.mp3',False)
+            playsound('c:\\data\\chatty_logs\\clien\\419023__jacco18__acess-denied-buzz.mp3',False)
         self._id = stream_id
         self._name = name
         self._login = login
@@ -133,7 +133,7 @@ class StreamerData:
          
     def end(self,endts): 
         if os.path.exists("c:\\data\\chatty_logs\\clien\\159399__noirenex__power-down.wav"):
-            playsound('159399__noirenex__power-down.wav',False)
+            playsound('c:\\data\\chatty_logs\\clien\\159399__noirenex__power-down.wav',False)
         self._ended = endts
 
         return self.get_row_final()
@@ -457,7 +457,7 @@ class StreamerDataWS(StreamerData):
            
     def disconnect_data(self,end_time):
         if os.path.exists("c:\\data\\chatty_logs\\clien\\51702__bristolstories__ping.mp3"):
-            playsound('51702__bristolstories__ping.mp3',False)
+            playsound('c:\\data\\chatty_logs\\clien\\51702__bristolstories__ping.mp3',False)
         self._ws_session = None
         self._sessions = None
         self._ended = end_time
@@ -699,7 +699,7 @@ async def ws(url,d,httpsession,r,logins,background_tasks,loginsids,ws_session,co
        #print(*spe,sep = '')
 
        if os.path.exists("c:\\data\\chatty_logs\\clien\\778926__looplicator__120-bpm-industrial-drum-loop-9503-wav.wav"):
-            playsound('778926__looplicator__120-bpm-industrial-drum-loop-9503-wav.wav',False)
+            playsound('c:\\data\\chatty_logs\\clien\\778926__looplicator__120-bpm-industrial-drum-loop-9503-wav.wav',False)
        
        #ws_session[0] = '';     
        mtime = None  
@@ -782,7 +782,7 @@ async def ws(url,d,httpsession,r,logins,background_tasks,loginsids,ws_session,co
   except asyncio.CancelledError:
 
     if os.path.exists("c:\\data\\chatty_logs\\clien\\90143__pengo_au__steam_burst.wav"):
-        playsound('90143__pengo_au__steam_burst.wav',False)   
+        playsound('c:\\data\\chatty_logs\\clien\\90143__pengo_au__steam_burst.wav',False)   
     await r.setDisconnected(d)
     print("ws cancelled...")    
     return 'closed'   
@@ -924,7 +924,7 @@ async def run(logins):
                                 
                         except aiohttp.ClientConnectorError as e:
                             if os.path.exists("c:\\data\\chatty_logs\\clien\\70106__justinbw__function-beep.wav"):
-                                playsound('70106__justinbw__function-beep.wav',False)
+                                playsound('c:\\data\\chatty_logs\\clien\\70106__justinbw__function-beep.wav',False)
                             console.log('Connection Error', str(e))        
                         t = time.time()
 
