@@ -72,7 +72,7 @@ TIME_CONST_MIN = 120
 MIN_AVG = 20
 N_MINUTES = 5
 N_MULTI = 2
-EVENT_LIMIT = 8
+EVENT_LIMIT = 4
    
 class StreamerData:
     def __init__(self, stream_id, name, login, viewers = 0, streamstarted = None, title =''):
