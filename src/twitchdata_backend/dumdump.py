@@ -60,11 +60,11 @@ def complement(h):
     return '#%02x%02x%02x' % tuple([int(255*x) for x in distinctipy.get_text_color([1.0*x/255 for x in tuple(int(h.lstrip("#")[i:i+2], 16) for i in (0, 2, 4))])])
     
 CLIENTID = 'hain44pio7jpdyo2yab09ols71hmkq'
-TOKENID = 'qdmv5qmxo667zhe6rhehz59bmo1e6z'
+TOKENID = '8z8rdb7pm6b8c9ocv9omhivr1p3i1d'
 URL = 'https://api.twitch.tv/helix/'
 WS_TIMEOUT = 30
 WS_URL = 'wss://eventsub.wss.twitch.tv/ws?keepalive_timeout_seconds='+str(WS_TIMEOUT)
-USER_ID = '462927932'
+USER_ID = '1214278273'
 SUB_LIST = ["channel.chat.message","channel.chat.notification"]
 DT_TIMEZONE = 'America/Chicago'
 BOT_NAMES = ['HAchuBOT','BeptoBot']
@@ -808,7 +808,7 @@ async def run(logins):
     csv_time = None
     new_csv_time = csv_time
     headers = {"Authorization": "Bearer "+TOKENID,"Client-Id":CLIENTID}    
-    fname = "csv\\bitch_"+datetime.utcnow().astimezone(ZoneInfo(DT_TIMEZONE)).strftime("%y%m%d%H%M%S")+".csv"
+    #fname = "csv\\bitch_"+datetime.utcnow().astimezone(ZoneInfo(DT_TIMEZONE)).strftime("%y%m%d%H%M%S")+".csv"
     ws_connected = asyncio.Event()
     #red = redis.Redis()
     #print(f"Ping successful: {await red.ping()}")
