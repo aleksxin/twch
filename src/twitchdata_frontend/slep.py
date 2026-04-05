@@ -353,6 +353,7 @@ async def page(l: Annotated[list[str] | None, Query()] = None):
                 if len(history_data)<=i or history_data[i]['id']!=s['id']:
                     history_data.insert(i,s)    
         print("1-Elapsed time before history:", perf_counter() - tt)     
+        print("one me")
         tt = perf_counter()  
         async for k in r.getHistory(l,50):
             for s in k:

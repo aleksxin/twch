@@ -60,7 +60,8 @@ def complement(h):
     return '#%02x%02x%02x' % tuple([int(255*x) for x in distinctipy.get_text_color([1.0*x/255 for x in tuple(int(h.lstrip("#")[i:i+2], 16) for i in (0, 2, 4))])])
     
 CLIENTID = 'hain44pio7jpdyo2yab09ols71hmkq'
-TOKENID = '8z8rdb7pm6b8c9ocv9omhivr1p3i1d'
+#TOKENID = '8z8rdb7pm6b8c9ocv9omhivr1p3i1d'
+TOKENID = '18fi5py389d1tdy7api7mzneffhbjj'
 URL = 'https://api.twitch.tv/helix/'
 WS_TIMEOUT = 30
 WS_URL = 'wss://eventsub.wss.twitch.tv/ws?keepalive_timeout_seconds='+str(WS_TIMEOUT)
@@ -714,7 +715,7 @@ async def ws(url,d,httpsession,r,logins,background_tasks,loginsids,ws_session,co
             match parsed['metadata']['message_type']:          
                 case "session_welcome":
                     ws_session[0] = parsed['payload']['session']['id']
-                    #print(spe1)
+                    print("hidedis")
                     print(spe1.format(*(s for s in (ws_session[0]+' starting').ljust(52,'.'))))#*['['+complement('#%02x%02x%02x' % tuple([int(255*x) for x in mcolors[i]]))+' on #%02x%02x%02x]' % tuple([int(255*x) for x in mcolors[i]])+s+'[/]' for i,s in enumerate(ws_session[0])],sep = '')
                     background_tasks.update((asyncio.create_task(d[loginsids[i]].connect_todata(httpsession,loginsids[i],ws_session[0],r), name='StartData for '+i) for i in loginsids if loginsids[i] in d))
                     if createsubs:
