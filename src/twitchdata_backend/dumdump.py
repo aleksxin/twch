@@ -61,7 +61,7 @@ def complement(h):
     
 CLIENTID = 'hain44pio7jpdyo2yab09ols71hmkq'
 #TOKENID = '8z8rdb7pm6b8c9ocv9omhivr1p3i1d'
-TOKENID = '18fi5py389d1tdy7api7mzneffhbjj'
+TOKENID = 'esp7br48ibisfopbqpyhcj6sei6i5r'
 URL = 'https://api.twitch.tv/helix/'
 WS_TIMEOUT = 30
 WS_URL = 'wss://eventsub.wss.twitch.tv/ws?keepalive_timeout_seconds='+str(WS_TIMEOUT)
